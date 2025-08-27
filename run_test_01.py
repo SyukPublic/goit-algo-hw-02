@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
 """
-Tests for Task 2
+Tests for Task 1
 """
 
-from tasks import palindrome_verify
+import random
+
+from tasks import generate_request, process_request
 
 
 def main():
@@ -12,14 +14,17 @@ def main():
 
         while True:
             try:
-                if palindrome_verify(input("\nEnter the word: ")):
-                    print("The word entered is a palindrome")
-                else:
-                    print("The word entered is not a palindrome")
+                # Create and enqueue requests
+                for _ in range(random.randint(1, 10)):
+                    generate_request()
+                # Dequeue and process requests
+                for _ in range(random.randint(1, 10)):
+                    process_request()
 
                 user_input = input("\nDo you want to continue? [Y/n]: ")
                 if user_input.lower() == 'n':
                     break
+
             except (EOFError, KeyboardInterrupt):
                 break
 
